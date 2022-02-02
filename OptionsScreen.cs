@@ -17,10 +17,6 @@ public class OptionsScreen : Screen
     private void Start()
     {
         _audioSource = GetComponent<AudioSource>();
-    }
-
-    private void Update()
-    {
         _audioSource.volume = _soundVolume;
     }
 
