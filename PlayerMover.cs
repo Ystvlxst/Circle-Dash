@@ -17,6 +17,7 @@ public class PlayerMover : MonoBehaviour
     private void Start()
     {
         _audioSource = GetComponent<AudioSource>();
+        StartCoroutine(ScoreReachedValue());
         StartGame();
     }
 
@@ -51,19 +52,21 @@ public class PlayerMover : MonoBehaviour
     private IEnumerator ScoreReachedValue()
     {
         var WaitForSeconds = new WaitForSeconds(10f);
-        yield return WaitForSeconds;
 
-        if (_speed < _maxSpeed)
+        while (true)
         {
-            _speed += 5;
-            Instantiate(_plusSpeed, transform.position, Quaternion.identity);
-            StartCoroutine(ScoreReachedValue());
+            if (_speed < _maxSpeed)
+            {
+                _speed += 5;
+                Instantiate(_plusSpeed, transform.position, Quaternion.identity);
+            }
+
+            yield return WaitForSeconds;
         }
     }
 
     public void StartGame()
     {
         _speed = 120f;
-        StartCoroutine(ScoreReachedValue());
     }
 }
