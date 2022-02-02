@@ -13,6 +13,7 @@ public class PlayerMover : MonoBehaviour
 
     private bool _isMove;
     private const float _maxSpeed = 200f;
+    private const float _speedStep = 5;
 
     private void Start()
     {
@@ -57,7 +58,7 @@ public class PlayerMover : MonoBehaviour
         {
             if (_speed < _maxSpeed)
             {
-                _speed += 5;
+                _speed += _speedStep;
                 Instantiate(_plusSpeed, transform.position, Quaternion.identity);
             }
 
