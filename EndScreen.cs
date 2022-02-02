@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class EndScreen : Screen
 {
-    public event UnityAction RestartButtonClick;
+    public event UnityAction RestartButtonClicked;
 
     public override void Close()
     {
@@ -21,6 +21,6 @@ public class EndScreen : Screen
 
     protected override void OnButtonClick()
     {
-        RestartButtonClick?.Invoke();
+        RestartButtonClicked?.Invoke();
     }
 }
