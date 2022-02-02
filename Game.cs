@@ -7,7 +7,7 @@ public class Game : MonoBehaviour
 {
     [SerializeField] private Player _player;
     [SerializeField] private PlayerMover _mover;
-    [SerializeField] private Enemy _spawner;
+    [SerializeField] private Spawner _spawner;
     [SerializeField] private StartScreen _startSreen;
     [SerializeField] private EndScreen _endScreen;
     [SerializeField] private OptionsScreen _optionsScreen;
@@ -15,7 +15,7 @@ public class Game : MonoBehaviour
     private void OnEnable()
     {
         _startSreen.PlayButtonClick += OnPlayButtonClick;
-        _endScreen.RestartButtonClick += OnRestartButtonClick;
+        _endScreen.RestartButtonClicked += OnRestartButtonClick;
         _optionsScreen.OptionsButtonClick += OnOptionsButtonClick;
         _player.GameOver += OnGameOver;
     }
@@ -23,7 +23,7 @@ public class Game : MonoBehaviour
     private void OnDisable()
     {
         _startSreen.PlayButtonClick -= OnPlayButtonClick;
-        _endScreen.RestartButtonClick -= OnRestartButtonClick;
+        _endScreen.RestartButtonClicked -= OnRestartButtonClick;
         _optionsScreen.OptionsButtonClick -= OnRestartButtonClick;
         _player.GameOver -= OnGameOver;
     }
@@ -55,8 +55,8 @@ public class Game : MonoBehaviour
     private void StartGame()
     {
         Time.timeScale = 1;
-        _player.StartGame();
-        _mover.StartGame();
+        _player.Reset();
+        _mover.SetStartSpeed();
     }
 
     public void OnGameOver()
