@@ -8,12 +8,12 @@ public class Spawner : MonoBehaviour
     [SerializeField] private GameObject[] _prefabs;
 
     private GameObject _spawned;
-    public event UnityAction RestartButtonClick;
+    public event UnityAction RestartButtonClicked;
 
     private void Start()
     {
         gameObject.SetActive(true);
-        RestartButtonClick?.Invoke();
+        RestartButtonClicked?.Invoke();
         StartCoroutine(SpawnEnemy());
     }
 
