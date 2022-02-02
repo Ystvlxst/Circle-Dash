@@ -24,10 +24,10 @@ public class PlayerMover : MonoBehaviour
 
     private void Update()
     {
-        ChangeDirection();
+        CheckDirectionChange();
     }
 
-    private void ChangeDirection()
+    private void CheckDirectionChange()
     {
         if (_isMove == true)
             ChooseDirection(_speed);
