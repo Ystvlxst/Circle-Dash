@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         _audioSource = GetComponent<AudioSource>();
-        StartGame();
+        Reset();
     }
 
     private void Update()
@@ -32,10 +32,10 @@ public class Player : MonoBehaviour
         _highScore = _score;
         _scoreText.text = _highScore.ToString();
 
-        if (PlayerPrefs.GetInt("score") <= _highScore)
-            PlayerPrefs.SetInt("score", _highScore);
+        if (PlayerPrefs.GetInt(ScoreManager.Params.score) <= _highScore)
+            PlayerPrefs.SetInt(ScoreManager.Params.score, _highScore);
 
-        _highScoreText.text = "High Score: " + PlayerPrefs.GetInt("score").ToString();
+        _highScoreText.text = "High Score: " + PlayerPrefs.GetInt(ScoreManager.Params.score).ToString();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -67,10 +67,18 @@ public class Player : MonoBehaviour
         _audioSource.Play();
     }
 
-    public void StartGame()
+    public void Reset()
     {
         _startPosition = new Vector3(_positionX, 0, 0);
         gameObject.SetActive(true);
         _score = 0;
+    }
+}
+
+public static class ScoreManager
+{
+    public static class Params
+    {
+        public const string score = nameof(score);
     }
 }
