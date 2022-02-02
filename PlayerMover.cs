@@ -19,7 +19,7 @@ public class PlayerMover : MonoBehaviour
     {
         _audioSource = GetComponent<AudioSource>();
         StartCoroutine(ScoreReachedValue());
-        StartGame();
+        SetStartSpeed();
     }
 
     private void Update()
@@ -66,7 +66,7 @@ public class PlayerMover : MonoBehaviour
         }
     }
 
-    public void StartGame()
+    public void SetStartSpeed()
     {
         _speed = 120f;
     }
