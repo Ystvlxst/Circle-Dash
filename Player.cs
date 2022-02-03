@@ -31,11 +31,6 @@ public class Player : MonoBehaviour
     {
         _highScore = _score;
         _scoreText.text = _highScore.ToString();
-
-        if (PlayerPrefs.GetInt(ScoreManager.Params.score) <= _highScore)
-            PlayerPrefs.SetInt(ScoreManager.Params.score, _highScore);
-
-        _highScoreText.text = "High Score: " + PlayerPrefs.GetInt(ScoreManager.Params.score).ToString();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -46,6 +41,7 @@ public class Player : MonoBehaviour
             _score++;
             PlaySound();
             Destroy(coin);
+            CheckScoreChange();
         }
 
         if (other.TryGetComponent(out EnemyMover enemy))
@@ -73,12 +69,21 @@ public class Player : MonoBehaviour
         gameObject.SetActive(true);
         _score = 0;
     }
+
+    private void CheckScoreChange()
+    {
+        if (PlayerPrefs.GetInt(ScoreManager.Params.Score) <= _highScore)
+            PlayerPrefs.SetInt(ScoreManager.Params.Score, _highScore);
+
+        _highScoreText.text = ScoreManager.Params.HighScore + PlayerPrefs.GetInt(ScoreManager.Params.Score).ToString();
+    }
 }
 
 public static class ScoreManager
 {
     public static class Params
     {
-        public const string score = nameof(score);
+        public const string Score = nameof(Score);
+        public const string HighScore = nameof(HighScore);
     }
 }
