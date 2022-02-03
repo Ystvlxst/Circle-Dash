@@ -12,7 +12,7 @@ public class OptionsScreen : Screen
     
     private float _soundVolume = 1f;
     
-    public event UnityAction OptionsButtonClick;
+    public event UnityAction OptionsButtonClicked;
 
     private void Start()
     {
@@ -39,6 +39,6 @@ public class OptionsScreen : Screen
 
     protected override void OnButtonClick()
     {
-        OptionsButtonClick?.Invoke();
+        OptionsButtonClicked?.Invoke();
     }
 }
