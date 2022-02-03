@@ -84,6 +84,6 @@ public static class ScoreManager
     public static class Params
     {
         public const string Score = nameof(Score);
-        public const string HighScore = nameof(HighScore);
+        public const string HighScore = "High Score: ";
     }
 }
