@@ -9,9 +9,6 @@ public abstract class Screen : MonoBehaviour
     [SerializeField] protected CanvasGroup CanvasGroup;
     [SerializeField] protected Button Button;
     [SerializeField] private TMP_Text _label;
-    
-    internal static int height;
-    internal static float width;
 
     private void OnEnable()
     {
